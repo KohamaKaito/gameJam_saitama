@@ -90,7 +90,7 @@ guestImage3.y = gameWindowHeight * 0.05;
 gameScene.addChild(guestImage3);
 
 
-//グラスの表示
+//お客さんのグラスの表示
 let guestGlassImage1 = new PIXI.Sprite(new PIXI.Texture.from("./images/glass.png"));
 guestGlassImage1.width = gameWindowWidth * 0.08;
 guestGlassImage1.height = gameWindowHeight * 0.165;
@@ -115,34 +115,177 @@ gameScene.addChild(guestGlassImage3);
 
 //制限時間の表示
 
+
+
+
 //お酒の配置
 let liqueurNameList = ["passoa", "orange", "lemon", "lime", "gin", "soda", "whiskey", "tonic", "vodka", "u-ron", "cassis", "peach"]
 let liqueurImageList = []
 
-let liqueurNum = 0;
-for(let i=0; i<3; i++){
-    for(let j=0; j<4; j++){
-        liqueurImageList[liqueurNum] = new PIXI.Sprite(new PIXI.Texture.from("./images/" + liqueurNameList[liqueurNum] +".png"));
-        liqueurImageList[liqueurNum].interactive = true;
-        liqueurImageList[liqueurNum].buttonMode = true;
-        liqueurImageList[liqueurNum].on('pointertap', (event) => {
-            console.log(liqueurNum);
-        })
-        liqueurImageList[liqueurNum].height = shelfImage.height /3;
-        liqueurImageList[liqueurNum].width = shelfImage.width /4;
-        liqueurImageList[liqueurNum].x = shelfImage.x + (liqueurImageList[i].width * j);
-        liqueurImageList[liqueurNum].y = shelfImage.y + (liqueurImageList[i].height * i);
-        gameScene.addChild(liqueurImageList[liqueurNum]);
-        liqueurNum += 1;
+// let liqueurNum = 0;
+// for(let i=0; i<3; i++){
+//     for(let j=0; j<4; j++){
+//         liqueurImageList[liqueurNum] = new PIXI.Sprite(new PIXI.Texture.from("./images/" + liqueurNameList[liqueurNum] +".png"));
+//         liqueurImageList[liqueurNum].interactive = true;
+//         liqueurImageList[liqueurNum].buttonMode = true;
+//         liqueurImageList[liqueurNum].on('pointertap', (event) => {
+//             console.log(liqueurNum);
+//         })
+//         liqueurImageList[liqueurNum].height = shelfImage.height /3;
+//         liqueurImageList[liqueurNum].width = shelfImage.width /4;
+//         liqueurImageList[liqueurNum].x = shelfImage.x + (liqueurImageList[i].width * j);
+//         liqueurImageList[liqueurNum].y = shelfImage.y + (liqueurImageList[i].height * i);
+//         gameScene.addChild(liqueurImageList[liqueurNum]);
+//         liqueurNum += 1;
+//     }
+// }
+
+
+
+
+//突貫工事(自分のグラス)
+function insertLiquer1(){
+    insertLiquer(1)
+}
+
+function insertLiquer2(){
+    insertLiquer(2)
+}
+
+function insertLiquer3(){
+    insertLiquer(3)
+}
+
+function insertLiquer4(){
+    insertLiquer(4)
+}
+
+//自分のグラスに酒を注ぐ
+function insertLiquer(liquerNum){
+    switch(myGrass.length){
+        case 0 :
+            var graphics = new PIXI.Graphics();
+            graphics.beginFill(colorList[liquerNum]);
+            graphics.drawRect(glassImage.x, glassImage.y + (glassImage.height / 4) * 3, 
+            glassImage.width, glassImage.height / 4);
+            gameScene.addChild(graphics);
+            gameScene.addChild(glassImage);
+            break;
+        case 1 :
+            var graphics = new PIXI.Graphics();
+            graphics.beginFill(colorList[liquerNum]);
+            graphics.drawRect(glassImage.x, glassImage.y + (glassImage.height / 4) * 2, 
+            glassImage.width, glassImage.height / 4);
+            gameScene.addChild(graphics);
+            gameScene.addChild(glassImage);
+            break;
+        case 2 :
+            var graphics = new PIXI.Graphics();
+            graphics.beginFill(colorList[liquerNum]);
+            graphics.drawRect(glassImage.x, glassImage.y + (glassImage.height / 4) * 1, 
+            glassImage.width, glassImage.height / 4);
+            gameScene.addChild(graphics);
+            gameScene.addChild(glassImage);
+            break;
+        case 3 :
+            var graphics = new PIXI.Graphics();
+            graphics.beginFill(colorList[liquerNum]);
+            graphics.drawRect(glassImage.x, glassImage.y + (glassImage.height / 4) * 0, 
+            glassImage.width, glassImage.height / 4);
+            gameScene.addChild(graphics);
+            gameScene.addChild(glassImage);
+            break;
+        case 4 : 
+            console.log("コップがいっぱいです")
+            break;
+    }
+    myGrass.push(liquerNum)
+}
+
+//リキュールの配置とボタン(現在1~4まで)
+let liquer1 = new PIXI.Sprite(new PIXI.Texture.from("./images/passoa.png"));
+liquer1.interactive = true;
+liquer1.buttonMode = true;
+liquer1.width = shelfImage.width/4;
+liquer1.height = shelfImage.height/3;
+liquer1.x = shelfImage.x;
+liquer1.y = shelfImage.y;
+liquer1.on('pointertap', insertLiquer1);
+gameScene.addChild(liquer1);
+
+
+let liquer2 = new PIXI.Sprite(new PIXI.Texture.from("./images/orange.png"));
+liquer2.interactive = true;
+liquer2.buttonMode = true;
+liquer2.width = shelfImage.width/4;
+liquer2.height = shelfImage.height/3;
+liquer2.x = shelfImage.x + shelfImage.width / 4;
+liquer2.y = shelfImage.y;
+liquer2.on('pointertap', insertLiquer2);
+gameScene.addChild(liquer2);
+
+
+let liquer3 = new PIXI.Sprite(new PIXI.Texture.from("./images/lemon.png"));
+liquer3.interactive = true;
+liquer3.buttonMode = true;
+liquer3.width = shelfImage.width/4;
+liquer3.height = shelfImage.height/3;
+liquer3.x = shelfImage.x + (shelfImage.width / 4) * 2;
+liquer3.y = shelfImage.y;
+liquer3.on('pointertap', insertLiquer3);
+gameScene.addChild(liquer3);
+
+
+let liquer4 = new PIXI.Sprite(new PIXI.Texture.from("./images/lime.png"));
+liquer4.interactive = true;
+liquer4.buttonMode = true;
+liquer4.width = shelfImage.width/4;
+liquer4.height = shelfImage.height/3;
+liquer4.x = shelfImage.x + (shelfImage.width / 4) * 3;
+liquer4.y = shelfImage.y;
+liquer4.on('pointertap', insertLiquer4);
+gameScene.addChild(liquer4);
+
+
+
+
+// 客ごとのオーダー
+function drawOrder(orderList,guestNumber){
+    switch(guestNumber){
+        case 1:
+            for(i=0; i<4; i++){
+                var graphics = new PIXI.Graphics();
+                graphics.beginFill(colorList[orderList[i]]);
+                graphics.drawRect(guestGlassImage1.x, guestGlassImage1.y + (guestGlassImage1.height / 4) * i, 
+                guestGlassImage1.width, guestGlassImage1.height / 4);
+                gameScene.addChild(graphics);
+                gameScene.addChild(guestGlassImage1);
+            }
+            break;
+        case 2:
+            for(i=0; i<4; i++){
+                var graphics = new PIXI.Graphics();
+                graphics.beginFill(colorList[orderList[i]]);
+                graphics.drawRect(guestGlassImage2.x, guestGlassImage2.y + (guestGlassImage2.height / 4) * i, 
+                guestGlassImage2.width, guestGlassImage2.height / 4);
+                gameScene.addChild(graphics);
+                gameScene.addChild(guestGlassImage2);
+            }
+            break;
+        case 3:
+            for(i=0; i<4; i++){
+                var graphics = new PIXI.Graphics();
+                graphics.beginFill(colorList[orderList[i]]);
+                graphics.drawRect(guestGlassImage3.x, guestGlassImage3.y + (guestGlassImage3.height / 4) * i, 
+                guestGlassImage3.width, guestGlassImage3.height / 4);
+                gameScene.addChild(graphics);
+                gameScene.addChild(guestGlassImage3);
+            }
+            break;
     }
 }
 
-
-// 色のついた長方形を描く
-/*
-var graphics = new PIXI.Graphics();
-graphics.beginFill(0xFFFF00);
-graphics.drawRect(glassImage.x, glassImage.y, glassImage.width, 100);
-gameScene.addChild(graphics);
-gameScene.addChild(glassImage);
-*/
+//オーダー例
+drawOrder(guestGrass4,1)
+drawOrder(guestGrass1,2)
+drawOrder(guestGrass3,3)
