@@ -1,4 +1,6 @@
-
+# タイトル
+ゲームの説明〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜  
+https://gamejam-saitama.web.app/
   
 # Contributors
 e195713   Iju Hoshi  
