@@ -1,6 +1,6 @@
 # タイトル
 ゲームの説明〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜  
-[ゲームのURL](gamejam-saitama.web.app)
+gamejam-saitama.web.app
   
 # Contributors
 e195713   Iju Hoshi  
