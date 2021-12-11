@@ -7,7 +7,13 @@
 
 
 // ボタンが押された時に呼び出される関数
+/*
 function select(){
     clickBGM.play();
     console.log('セレクトされました')
+}
+*/
+
+function clickLiqueur(e){
+    console.log(e.data.name)
 }
