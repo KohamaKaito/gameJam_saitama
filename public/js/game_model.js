@@ -6,7 +6,7 @@
 // gameWindowHeight・・・ゲーム画面の高さ
 
 
-// タイトル画面からゲーム画面へ画面遷移する関数
+// ボタンが押された時に呼び出される関数
 function select(){
     clickBGM.play();
     console.log('セレクトされました')
