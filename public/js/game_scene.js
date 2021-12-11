@@ -45,3 +45,11 @@ timerImage.height = timerImage.width;
 timerImage.x = gameWindowWidth * 0.01;
 timerImage.y = gameWindowHeight * 0.01;
 gameScene.addChild(timerImage);
+
+//バーテンダーの配置
+let bartenderImage = new PIXI.Sprite(new PIXI.Texture.from("./images/macho_bartender.png"));
+//bartenderImage.width = gameWindowWidth /7;
+//bartenderImage.height = timerImage.width;
+bartenderImage.x = gameWindowWidth * 0.7;
+bartenderImage.y = gameWindowHeight * 0.5;
+gameScene.addChild(bartenderImage);
