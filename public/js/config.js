@@ -1,12 +1,12 @@
 // 設定ファイル
 
 var config = {
-    apiKey: "AIzaSyCsmz_vqciQDjXHh9l8ekTqiERG4AowB5g",
-    authDomain: "ed-game-project.firebaseapp.com",
-    projectId: "ed-game-project",
-    storageBucket: "ed-game-project.appspot.com",
-    messagingSenderId: "112968060654",
-    appId: "1:112968060654:web:7ca93cb3f8ee05fb876dff",
-    measurementId: "G-P52X757W15"
+    apiKey: "AIzaSyAoOxZ6I1bR-RZGTQwLAE7bnIJXmKxQjG4",
+    authDomain: "gamejam-saitama.firebaseapp.com",
+    projectId: "gamejam-saitama",
+    storageBucket: "gamejam-saitama.appspot.com",
+    messagingSenderId: "84883052424",
+    appId: "1:84883052424:web:fd1939d2fdc1da0dd10c3d",
+    measurementId: "${config.measurementId}"
   };
   firebase.initializeApp(config);

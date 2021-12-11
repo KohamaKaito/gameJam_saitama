@@ -13,10 +13,10 @@ const gameScene = new PIXI.Container();
 let selectButtonImage1 = new PIXI.Sprite(new PIXI.Texture.from("images/selectButton.png"));
 selectButtonImage1.interactive = true;
 selectButtonImage1.buttonMode = true;
-selectButtonImage1.width = boardImage.width/7;
-selectButtonImage1.height = boardImage.width/7;
-selectButtonImage1.x = boardImage.x;
-selectButtonImage1.y = boardImage.y;
-selectButtonImage1.on('pointertap', insertCoin1);
+selectButtonImage1.width = 100;
+selectButtonImage1.height = 100;
+selectButtonImage1.x = 100;
+selectButtonImage1.y = 100;
+selectButtonImage1.on('pointertap', select);
 gameScene.addChild(selectButtonImage1);
 
