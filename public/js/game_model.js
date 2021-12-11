@@ -6,14 +6,6 @@
 // gameWindowHeight・・・ゲーム画面の高さ
 
 
-// ボタンが押された時に呼び出される関数
-/*
-function select(){
-    clickBGM.play();
-    console.log('セレクトされました')
-}
-*/
-
 function clickLiqueur(e){
     console.log(e.data.name)
 }
@@ -21,12 +13,10 @@ function clickLiqueur(e){
 
 // 例
 let myGrass = [1,1,2,2]
-
 let guestGrass1 = [2,2,1,1]
 let guestGrass2 = [1,2,1,2]
 let guestGrass3 = [2,1,2,1]
 let guestGrass4 = [1,1,2,3]
-
 
 
 // 正解判定
@@ -39,6 +29,7 @@ function judge(guestGrass){
         return false
     }
 }
+
 
 // 例
 judge(guestGrass1)

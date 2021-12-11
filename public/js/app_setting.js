@@ -20,3 +20,4 @@ gameWindow.appendChild(app.view);
 
 // クリックBGM
 let clickBGM = new Audio("music/click.mp3");
+clickBGM.volume = 0.01;
