@@ -48,8 +48,29 @@ gameScene.addChild(timerImage);
 
 //バーテンダーの配置
 let bartenderImage = new PIXI.Sprite(new PIXI.Texture.from("./images/macho_bartender.png"));
-//bartenderImage.width = gameWindowWidth /7;
-//bartenderImage.height = timerImage.width;
 bartenderImage.x = gameWindowWidth * 0.7;
 bartenderImage.y = gameWindowHeight * 0.5;
 gameScene.addChild(bartenderImage);
+
+//お酒の配置
+let liqueurNameList = ["passoa", "orange", "lemon", "lime", "gin", "soda", "whiskey", "tonic", "vodka", "u-ron", "cassis", "peach"]
+let liqueurImageList = []
+for(let i = 0; i < liqueurNameList.length; i++){
+    liqueurImageList[i] = new PIXI.Sprite(new PIXI.Texture.from("./images/" + liqueurNameList[i] +".png"));
+    liqueurImageList[i].interactive = true;
+    liqueurImageList[i].buttonMode = true;
+    liqueurImageList[i].on('pointertap', (event) => {
+         console.log(liqueurNameList[i]); 
+        })
+    liqueurImageList[i].height = shelfImage.height /3;
+    liqueurImageList[i].width = shelfImage.width /4;
+    if(i=0){
+        liqueurImageList[i].x = shelfImage.x;
+        liqueurImageList[i].y = shelfImage.y;
+    }else if((i-1)/4 % 0){
+        liqueurImageList[i].y += liqueurImageList[i].height;
+    }else{
+        liqueurImageList[i].x += liqueurImageList[i].width;
+    }
+    gameScene.addChild(liqueurImageList[i]);
+}
