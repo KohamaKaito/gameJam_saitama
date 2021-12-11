@@ -55,22 +55,22 @@ gameScene.addChild(bartenderImage);
 //お酒の配置
 let liqueurNameList = ["passoa", "orange", "lemon", "lime", "gin", "soda", "whiskey", "tonic", "vodka", "u-ron", "cassis", "peach"]
 let liqueurImageList = []
-for(let i = 0; i < liqueurNameList.length; i++){
-    liqueurImageList[i] = new PIXI.Sprite(new PIXI.Texture.from("./images/" + liqueurNameList[i] +".png"));
-    liqueurImageList[i].interactive = true;
-    liqueurImageList[i].buttonMode = true;
-    liqueurImageList[i].on('pointertap', (event) => {
-         console.log(liqueurNameList[i]); 
+
+let liqueurNum = 0;
+for(let i=0; i<3; i++){
+    for(let j=0; j<4; j++){
+        liqueurImageList[liqueurNum] = new PIXI.Sprite(new PIXI.Texture.from("./images/" + liqueurNameList[liqueurNum] +".png"));
+        liqueurImageList[liqueurNum].interactive = true;
+        liqueurImageList[liqueurNum].buttonMode = true;
+        liqueurImageList[liqueurNum].on('pointertap', (event) => {
+            console.log(liqueurNameList[liqueurNum]);
         })
-    liqueurImageList[i].height = shelfImage.height /3;
-    liqueurImageList[i].width = shelfImage.width /4;
-    if(i=0){
-        liqueurImageList[i].x = shelfImage.x;
-        liqueurImageList[i].y = shelfImage.y;
-    }else if((i-1)/4 % 0){
-        liqueurImageList[i].y += liqueurImageList[i].height;
-    }else{
-        liqueurImageList[i].x += liqueurImageList[i].width;
+        liqueurImageList[liqueurNum].height = shelfImage.height /3;
+        liqueurImageList[liqueurNum].width = shelfImage.width /4;
+        liqueurImageList[liqueurNum].x = shelfImage.x + (liqueurImageList[i].width * j);
+        liqueurImageList[liqueurNum].y = shelfImage.y + (liqueurImageList[i].height * i);
+        gameScene.addChild(liqueurImageList[liqueurNum]);
+        liqueurNum += 1;
     }
-    gameScene.addChild(liqueurImageList[i]);
 }
+
