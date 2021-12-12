@@ -87,25 +87,25 @@ gameScene.addChild(windowImage3);
 
 
 // お客さんの配置
-let guestImage1 = new PIXI.Sprite(new PIXI.Texture.from("./images/guest1_1.png"));
+let guestImage1 = new PIXI.Sprite(new PIXI.Texture.from("./images/guest_man.png"));
 guestImage1.width = gameWindowWidth * 0.15;
 guestImage1.height = gameWindowHeight * 0.27;
 guestImage1.x = gameWindowWidth * 0.175;
 guestImage1.y = gameWindowHeight * 0.05;
 gameScene.addChild(guestImage1);
 
-let guestImage2 = new PIXI.Sprite(new PIXI.Texture.from("./images/guest1_1.png"));
-guestImage2.width = gameWindowWidth * 0.15;
-guestImage2.height = gameWindowHeight * 0.27;
+let guestImage2 = new PIXI.Sprite(new PIXI.Texture.from("./images/guest_woman.png"));
+guestImage2.width = guestImage1.width*0.9;
+guestImage2.height = guestImage1.height*0.9;
 guestImage2.x = gameWindowWidth * 0.45;
-guestImage2.y = gameWindowHeight * 0.05;
+guestImage2.y = gameWindowHeight * 0.07;
 gameScene.addChild(guestImage2);
 
-let guestImage3 = new PIXI.Sprite(new PIXI.Texture.from("./images/guest1_1.png"));
-guestImage3.width = gameWindowWidth * 0.15;
-guestImage3.height = gameWindowHeight * 0.27;
-guestImage3.x = gameWindowWidth * 0.725;
-guestImage3.y = gameWindowHeight * 0.05;
+let guestImage3 = new PIXI.Sprite(new PIXI.Texture.from("./images/guest_oldman.png"));
+guestImage3.width = guestImage1.width*0.8;
+guestImage3.height = guestImage1.height*0.9;
+guestImage3.x = gameWindowWidth * 0.728;
+guestImage3.y = gameWindowHeight * 0.07;
 gameScene.addChild(guestImage3);
 
 
@@ -127,7 +127,7 @@ gameScene.addChild(guestGlassImage2);
 let guestGlassImage3 = new PIXI.Sprite(new PIXI.Texture.from("./images/glass.png"));
 guestGlassImage3.width = gameWindowWidth * 0.08;
 guestGlassImage3.height = gameWindowHeight * 0.165;
-guestGlassImage3.x = windowImage3.x + guestImage3.width;
+guestGlassImage3.x = windowImage3.x + guestImage3.width*1.1;
 guestGlassImage3.y = gameWindowHeight * 0.08;
 gameScene.addChild(guestGlassImage3);
 
