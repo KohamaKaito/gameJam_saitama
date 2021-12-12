@@ -8,6 +8,9 @@ drawOrder(guestGlass3,3)
 function main(){
     if(timer == 0){
         /*ゲーム終了*/
+        clearInterval(mainLoop);
+        gameOverBGM.play();
+        fromGameSceneToScoreScene();
     }else if(timer == 60){
         initializeGlasses();
     }
