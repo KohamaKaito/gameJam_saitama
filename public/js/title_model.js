@@ -13,12 +13,17 @@ function fromTitleSceneToGameScene(){
 
 }
 
+function clickEasy(){
+    setDifficulty("EASY", 4)
+    fromTitleSceneToGameScene();
+}
+
 function clickNormal(){
-    difficulty = "NORMAL";
+    setDifficulty("NORMAL", 6)
     fromTitleSceneToGameScene();
 }
 
 function clickHard(){
-    difficulty = "HARD";
+    setDifficulty("HARD", 6)
     fromTitleSceneToGameScene();
 }

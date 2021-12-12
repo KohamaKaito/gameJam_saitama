@@ -32,7 +32,7 @@ easyButton.buttonMode = true;
 easyButton.style.fontSize = gameWindowWidth/20;
 easyButton.x = gameWindowWidth/2 - easyButton.width * 2;
 easyButton.y = gameWindowHeight/1.45;
-easyButton.on('pointertap', fromTitleSceneToGameScene);
+easyButton.on('pointertap', clickEasy);
 titleScene.addChild(easyButton);
 
 let normalButton = new PIXI.Text("ノーマル", {fill: 0xFFFFFF,  align :'center'});

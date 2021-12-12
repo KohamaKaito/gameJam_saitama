@@ -132,6 +132,8 @@ guestGlassImage3.y = gameWindowHeight * 0.08;
 gameScene.addChild(guestGlassImage3);
 
 
+
+
 // リキュールの配置
 let liqueur1 = new PIXI.Sprite(new PIXI.Texture.from("./images/passoa.png"));
 liqueur1.interactive = true;
@@ -257,7 +259,7 @@ gameScene.addChild(liqueur12);
 // 入れたお酒を描画する関数
 let myGlassView = [];
 function drawSelectedLiqueur(liqueurNum){
-    if(myGlass.length == 4){
+    if(myGlass.length == max_num){
         missBGM.play()
         alert("コップがいっぱいです!!!")
         return;
@@ -266,8 +268,8 @@ function drawSelectedLiqueur(liqueurNum){
         drinkBGM.currentTime = 0;
         myGlassView[myGlass.length] = new PIXI.Graphics();
         myGlassView[myGlass.length].beginFill(colorList[liqueurNum]);
-        myGlassView[myGlass.length].drawRect(glassImage.x, glassImage.y + (glassImage.height / 4) * (3 - myGlass.length),
-            glassImage.width, glassImage.height / 4);
+        myGlassView[myGlass.length].drawRect(glassImage.x, glassImage.y + (glassImage.height / max_num) * (max_num - 1 - myGlass.length),
+            glassImage.width, glassImage.height / max_num);
         gameScene.addChild(myGlassView[myGlass.length]);
         gameScene.addChild(glassImage);
     }
@@ -282,38 +284,37 @@ let guestGlassView3 = [];
 function drawOrder(orderList,guestNumber){
     switch(guestNumber){
         case 1:
-            for(i=0; i<4; i++){
+            for(i=0; i<max_num; i++){
                 guestGlassView1[i] = new PIXI.Graphics();
                 guestGlassView1[i].beginFill(colorList[orderList[i]]);
-                guestGlassView1[i].drawRect(guestGlassImage1.x, guestGlassImage1.y + (guestGlassImage1.height / 4) * i,
-                guestGlassImage1.width, guestGlassImage1.height / 4);
+                guestGlassView1[i].drawRect(guestGlassImage1.x, guestGlassImage1.y + (guestGlassImage1.height / max_num) * i,
+                guestGlassImage1.width, guestGlassImage1.height / max_num);
                 gameScene.addChild(guestGlassView1[i]);
                 gameScene.addChild(guestGlassImage1);
             }
             break;
         case 2:
-            for(i=0; i<4; i++){
+            for(i=0; i<max_num; i++){
                 guestGlassView2[i] = new PIXI.Graphics();
                 guestGlassView2[i].beginFill(colorList[orderList[i]]);
-                guestGlassView2[i].drawRect(guestGlassImage2.x, guestGlassImage2.y + (guestGlassImage2.height / 4) * i,
-                guestGlassImage2.width, guestGlassImage2.height / 4);
+                guestGlassView2[i].drawRect(guestGlassImage2.x, guestGlassImage2.y + (guestGlassImage2.height / max_num) * i,
+                guestGlassImage2.width, guestGlassImage2.height / max_num);
                 gameScene.addChild(guestGlassView2[i]);
                 gameScene.addChild(guestGlassImage2);
             }
             break;
         case 3:
-            for(i=0; i<4; i++){
+            for(i=0; i<max_num; i++){
                 guestGlassView3[i] = new PIXI.Graphics();
                 guestGlassView3[i].beginFill(colorList[orderList[i]]);
-                guestGlassView3[i].drawRect(guestGlassImage3.x, guestGlassImage3.y + (guestGlassImage3.height / 4) * i,
-                guestGlassImage3.width, guestGlassImage3.height / 4);
+                guestGlassView3[i].drawRect(guestGlassImage3.x, guestGlassImage3.y + (guestGlassImage3.height / max_num) * i,
+                guestGlassImage3.width, guestGlassImage3.height / max_num);
                 gameScene.addChild(guestGlassView3[i]);
                 gameScene.addChild(guestGlassImage3);
             }
             break;
     }
 }
-
 
 //グラスの中身を消す
 function resetMyGlassView(){
