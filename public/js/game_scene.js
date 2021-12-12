@@ -37,8 +37,10 @@ gameScene.addChild(timerImage);
 
 // バーテンダーの配置
 let bartenderImage = new PIXI.Sprite(new PIXI.Texture.from("./images/macho_bartender.png"));
+bartenderImage.width = gameWindowWidth * 0.3;
+bartenderImage.height = gameWindowHeight * 0.4;
 bartenderImage.x = gameWindowWidth * 0.7;
-bartenderImage.y = gameWindowHeight * 0.5;
+bartenderImage.y = gameWindowHeight * 0.6;
 gameScene.addChild(bartenderImage);
 
 //リセットボタンの配置
@@ -350,15 +352,12 @@ timerText.width = timerImage.width/3;
 timerText.height = timerImage.height/3;
 timerText.x = timerImage.x + timerImage.width/2 - timerText.width/2;
 timerText.y = timerImage.y + timerImage.height/2;
+
 function drawTimer(){
-    if(timer == 0){
-        gameOverBGM.play()
-        alert('！！タイムアップ！！');
-    }
-    timer -= 1;
-    timerText.text = timer
+    timerText.text = timer;
     gameScene.addChild(timerText);
 }
+
 
 
 // お客さん1の制限時間の描画
@@ -370,14 +369,10 @@ guestTimerView1.x = guestGlassImage1.x + guestGlassImage1.width/2 - guestTimerVi
 guestTimerView1.y = guestGlassImage1.y + guestGlassImage1.height;
 // 1秒ごとに実行される
 function drawGuestTimer1(){
-    if(guestTimer1 == 0){
-        guestTimer1 = guestTimeLimit1;
-    }else{
-        guestTimer1 -= 1;
-    }
     guestTimerView1.text = guestTimer1;
     gameScene.addChild(guestTimerView1);
 }
+
 
 
 // お客さん2の制限時間の描画
@@ -389,11 +384,6 @@ guestTimerView2.x = guestGlassImage2.x + guestGlassImage2.width/2 - guestTimerVi
 guestTimerView2.y = guestGlassImage2.y + guestGlassImage2.height;
 // 1秒ごとに実行される
 function drawGuestTimer2(){
-    if(guestTimer2 == 0){
-        guestTimer2 = guestTimeLimit2;
-    }else{
-        guestTimer2 -= 1;
-    }
     guestTimerView2.text = guestTimer2;
     gameScene.addChild(guestTimerView2);
 }
@@ -408,11 +398,25 @@ guestTimerView3.x = guestGlassImage3.x + guestGlassImage3.width/2 - guestTimerVi
 guestTimerView3.y = guestGlassImage3.y + guestGlassImage3.height;
 // 1秒ごとに実行される
 function drawGuestTimer3(){
-    if(guestTimer3 == 0){
-        guestTimer3 = guestTimeLimit3;
-    }else{
-        guestTimer3 -= 1;
-    }
     guestTimerView3.text = guestTimer3;
     gameScene.addChild(guestTimerView3);
+}
+
+
+let theScoreText = new PIXI.Text("Score", {fill: 0x000000,  align :'center'});
+theScoreText.style.fontSize = gameWindowWidth/10;
+theScoreText.width = gameWindowWidth * 0.1;
+theScoreText.height = timerImage.height * 0.3;
+theScoreText.x = gameWindowWidth * 0.7;
+theScoreText.y = gameWindowHeight * 0.5;
+gameScene.addChild(theScoreText);
+
+
+let scoreText = new PIXI.Text(score, {fill: 0x000000,  align :'center'});
+scoreText.style.fontSize = gameWindowWidth * 0.05;
+scoreText.x = gameWindowWidth * 0.85;
+scoreText.y = gameWindowHeight * 0.48;
+function drawScore(){
+    scoreText.text = score;
+    gameScene.addChild(scoreText);
 }

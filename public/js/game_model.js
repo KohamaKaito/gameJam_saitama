@@ -91,9 +91,14 @@ guestGlass3 = createOrder();
 
 
 // 全体の制限時間
-let timer = 30;
+let timer = 120;
 
 // お客さん1の制限時間
+
+
+// スコア
+let score = 0;
+
 let guestTimeLimit1 = setTimeLimit(guestGlass1);
 let guestTimer1 = guestTimeLimit1;
 
@@ -258,9 +263,8 @@ function resetGuestGlass3(){
 //酒提供
 function serveDrink1(){
     if(judge(guestGlass1) == true){
-        /* ここにスコア */  
-        okBGM.play();
-        alert("1いいね");      
+        updateScore(1);
+        okBGM.play();      
     }
     else{
         missBGM.play();
@@ -273,10 +277,8 @@ function serveDrink1(){
 
 function serveDrink2(){
     if(judge(guestGlass2) == true){
-        /* ここにスコア */
+        updateScore(2);
         okBGM.play();
-        alert("2いいね");
-
     }
     else{
         missBGM.play();
@@ -289,9 +291,8 @@ function serveDrink2(){
 
 function serveDrink3(){
     if(judge(guestGlass3) == true){
-        /* ここにスコア */ 
-        okBGM.play();
-        alert("3いいね");       
+        updateScore(3);
+        okBGM.play();      
     }
     else{
         missBGM.play();
@@ -301,6 +302,63 @@ function serveDrink3(){
     resetGuestGlass3();
     updateGuest3();
 }
+
+
+// スコアの更新
+function updateScore(guestNum){
+    switch (guestNum){
+        case 1:
+            if(guestTimer1>=0 && guestTimer1<10){
+                score += 10;
+            }else if(guestTimer1>=10 && guestTimer1<20){
+                score += 20;
+            }else if(guestTimer1>=20 && guestTimer1<30){
+                score += 30;
+            }
+            break
+        case 2:
+            if(guestTimer2>=0 && guestTimer2<10){
+                score += 10;
+            }else if(guestTimer2>=10 && guestTimer2<20){
+                score += 20;
+            }else if(guestTimer2>=20 && guestTimer2<30){
+                score += 30;
+            }
+            break
+        case 3:
+            if(guestTimer3>=0 && guestTimer3<10){
+                score += 10;
+            }else if(guestTimer3>=10 && guestTimer3<20){
+                score += 20;
+            }else if(guestTimer3>=20 && guestTimer3<30){
+                score += 30;
+            }
+            break
+    }
+}
+
+
+function decrementTimer(){
+    timer -= 1;
+    if(guestTimer1 == 0){
+        guestTimer1 = guestTimeLimit1;
+    }else{
+        guestTimer1 -= 1;
+    }
+
+    if(guestTimer2 == 0){
+        guestTimer2 = guestTimeLimit2;
+    }else{
+        guestTimer2 -= 1;
+    }
+
+    if(guestTimer3 == 0){
+        guestTimer3 = guestTimeLimit3;
+    }else{
+        guestTimer3 -= 1;
+    }
+}
+
 
 function updateGuest1(){
     guestGlass1 = createOrder();
