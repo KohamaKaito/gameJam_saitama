@@ -265,6 +265,7 @@ function drawSelectedLiqueur(liqueurNum){
         myGlassView[myGlass.length].drawRect(glassImage.x, glassImage.y + (glassImage.height / 4) * (3 - myGlass.length),
             glassImage.width, glassImage.height / 4);
         gameScene.addChild(myGlassView[myGlass.length]);
+        gameScene.addChild(glassImage);
     }
 }
 
