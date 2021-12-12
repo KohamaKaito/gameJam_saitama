@@ -79,6 +79,20 @@ let colorList = [
     0xFFC0CB, // ピンク
 ];
 
+// 全体の制限時間
+let timer = 30;
+
+// お客さん1の制限時間
+let guestTimeLimit1 = 9;
+let guestTimer1 = guestTimeLimit1;
+
+// お客さん2の制限時間
+let guestTimeLimit2 = 9;
+let guestTimer2 = guestTimeLimit2;
+
+// お客さん3の制限時間
+let guestTimeLimit3 = 9;
+let guestTimer3 = guestTimeLimit3;
 
 // ランダムでオーダーを決定する関数
 function createOrder(){
