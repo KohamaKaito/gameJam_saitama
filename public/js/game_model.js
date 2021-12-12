@@ -79,25 +79,52 @@ let colorList = [
     0xFFC0CB, // ピンク
 ];
 
-// 全体の制限時間
-let timer = 30;
-
-// お客さん1の制限時間
-let guestTimeLimit1 = 9;
-let guestTimer1 = guestTimeLimit1;
-
-// お客さん2の制限時間
-let guestTimeLimit2 = 9;
-let guestTimer2 = guestTimeLimit2;
-
-// お客さん3の制限時間
-let guestTimeLimit3 = 9;
-let guestTimer3 = guestTimeLimit3;
-
 // ランダムでオーダーを決定する関数
 function createOrder(){
     let randomInt = Math.floor(Math.random() * easyDrinkList.length);
     return easyDrinkList[randomInt];
+}
+
+guestGlass1 = createOrder();
+guestGlass2 = createOrder();
+guestGlass3 = createOrder();
+
+
+// 全体の制限時間
+let timer = 30;
+
+// お客さん1の制限時間
+let guestTimeLimit1 = setTimeLimit(guestGlass1);
+let guestTimer1 = guestTimeLimit1;
+
+// お客さん2の制限時間
+let guestTimeLimit2 = setTimeLimit(guestGlass2);
+let guestTimer2 = guestTimeLimit2;
+
+// お客さん3の制限時間
+let guestTimeLimit3 = setTimeLimit(guestGlass3);
+let guestTimer3 = guestTimeLimit3;
+
+function setTimeLimit(guestGlass){
+    let unique = Array.from(new Set(guestGlass))
+    console.log(guestGlass);
+    console.log(unique.length);
+    switch(unique.length){
+        case 4:
+            return 30;
+            break;
+        case 3:
+            return 25;
+            break;
+        case 2:
+            return 20;
+            break;
+        case 1:
+            return 10;
+            break;
+        default:
+            return 20;
+    }
 }
 
 
@@ -209,22 +236,22 @@ function selectedLiqueur12(){
 //　グラスをリセット
 function resetMyGlass(){
     myGlass = [];
-    resetMyGlassView()
+    resetMyGlassView();
 }
 
 function resetGuestGlass1(){
     guestGlass1 = [];
-    resetGuestGlassView1()
+    resetGuestGlassView1();
 }
 
 function resetGuestGlass2(){
     guestGlass2 = [];
-    resetGuestGlassView2()
+    resetGuestGlassView2();
 }
 
 function resetGuestGlass3(){
     guestGlass3 = [];
-    resetGuestGlassView3()
+    resetGuestGlassView3();
 }
 
 //酒提供
@@ -236,8 +263,9 @@ function serveDrink1(){
     else{
         /* 減点する? */
     }
-    resetMyGlass()
-    resetGuestGlass1()
+    resetMyGlass();
+    resetGuestGlass1();
+    updateGuest1();
 }
 
 function serveDrink2(){
@@ -248,8 +276,9 @@ function serveDrink2(){
     else{
         /* 減点する? */
     }
-    resetMyGlass()
-    resetGuestGlass2()
+    resetMyGlass();
+    resetGuestGlass2();
+    updateGuest2();
 }
 
 function serveDrink3(){
@@ -260,7 +289,27 @@ function serveDrink3(){
     else{
         /* 減点する? */
     }
-    resetMyGlass()
-    resetGuestGlass3()
+    resetMyGlass();
+    resetGuestGlass3();
+    updateGuest3();
 }
 
+function updateGuest1(){
+    guestGlass1 = createOrder();
+    guestTimeLimit1 = setTimeLimit(guestGlass1);
+    guestTimer1 = guestTimeLimit1;
+    drawOrder(guestGlass1, 1);
+}
+
+function updateGuest2(){
+    guestGlass2 = createOrder();
+    guestTimeLimit2 = setTimeLimit(guestGlass2);
+    guestTimer2 = guestTimeLimit2;
+    drawOrder(guestGlass2, 2);
+}
+function updateGuest3(){
+    guestGlass3 = createOrder();
+    guestTimeLimit3 = setTimeLimit(guestGlass3);
+    guestTimer3 = guestTimeLimit3;
+    drawOrder(guestGlass3, 3);
+}
