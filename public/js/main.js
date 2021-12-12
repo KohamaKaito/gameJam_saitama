@@ -8,6 +8,8 @@ drawOrder(guestGlass3,3)
 function main(){
     if(timer == 0){
         /*ゲーム終了*/
+    }else if(timer == 60){
+        initializeGlasses();
     }
     decrementTimer();
     drawTimer();

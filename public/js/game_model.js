@@ -22,6 +22,13 @@
 12 = "peach"
 */
 
+let difficulty = "EASY";
+let max_num = 4;
+
+function setDifficulty(diff, max){
+    difficulty = diff;
+    max_num = max;
+}
 
 // 自分のグラスの情報
 let myGlass = [];
@@ -59,7 +66,40 @@ let easyDrinkList = [
     [1,8,8,8],      // パッソアトニック
 ];
 
-// let hardDrinkList = [];
+
+
+let hardDrinkList = [
+    [8,8,8,8,5,5],      // ジントニック
+    [4,4,5,5,5,5],      // ギムレット
+    [4,8,8,8,9,9],      // モスコミュール
+    [11,11,2,2,2,2],     // カシスオレンジ
+    [11,10,10,10],  // カシスウーロン
+    [11,11,6,6,6,6],     // カシスソーダ
+    [1,1,2,2,2,2],      // パッソアオレンジ
+    [1,1,6,6,6,6],      // パッソアソーダ
+    [7,7,6,6,6,6],      // ハイボール
+    [2,2,2,2,9,9],      // スクリュードライバー
+    [12,12,10,10,10,10],  // ピーチウーロン
+    [12,12,2,2,2,2],     // ファジーネーブル
+    [7,7,3,6,6,6],      // レモンハイボール
+    [7,7,4,6,6,6],      // ライムハイボール
+    [4,4,4,9,9,9],      // カミカゼ
+    [3,6,6,6,5,5],      // ジンフィズ
+    [12,2,2,5,5,5],     // パラダイス
+    [3,3,7,7,7,7],      // ペニシリン
+    [8,8,8,8,9,9],      // ウオッカトニック
+    [1,1,8,8,8,8],      // パッソアトニック
+    [12,11,2,2,3,3],     //プレミアムサマー
+    [11,4,4,10,10,10],   //トロピカルウーロン
+    [5,9,9,7,7,7],       //ダイナマイト
+    [11,2,2,1,1,1],      //バイオハザード
+    [12,12,3,8,8,8],    //フレっシュ
+    [1,1,1,1,1,7],     //パッソアクレイジー
+    [11,11,5,5,6,8],   //レディー
+    [9,5,7,12,1,11],   //カルストンライトオ
+    [6,8,8,8,3,3],     //ダイエットソーダ
+];
+
 // let originalDrinkList = [];
 
 // 色リスト
@@ -81,8 +121,22 @@ let colorList = [
 
 // ランダムでオーダーを決定する関数
 function createOrder(){
-    let randomInt = Math.floor(Math.random() * easyDrinkList.length);
-    return easyDrinkList[randomInt];
+    let result;
+    switch(difficulty){
+        case "EASY":
+            let randomIntEasy = Math.floor(Math.random() * easyDrinkList.length);
+            result = easyDrinkList[randomIntEasy];
+            break;
+        case "NORMAL":
+            let randomIntHard = Math.floor(Math.random() * hardDrinkList.length);
+            console.log()
+            result = hardDrinkList[randomIntHard];
+            break;
+        case "HARD":
+            break;
+    }
+    console.log(result);
+    return result;
 }
 
 guestGlass1 = createOrder();
@@ -112,9 +166,13 @@ let guestTimer3 = guestTimeLimit3;
 
 function setTimeLimit(guestGlass){
     let unique = Array.from(new Set(guestGlass))
-    console.log(guestGlass);
-    console.log(unique.length);
     switch(unique.length){
+        case 6:
+            return 45;
+            break;
+        case 5:
+            return 40;
+            break;
         case 4:
             return 30;
             break;
@@ -127,8 +185,6 @@ function setTimeLimit(guestGlass){
         case 1:
             return 10;
             break;
-        default:
-            return 20;
     }
 }
 
@@ -137,6 +193,7 @@ function setTimeLimit(guestGlass){
 function judge(guestGlass){
     myGlass.sort();
     guestGlass.sort();
+    alert([myGlass, guestGlass]);
     if(JSON.stringify(myGlass) == JSON.stringify(guestGlass)){
         return true;
     }else{
@@ -155,84 +212,84 @@ function resetMyGlass(){
 // 選んだお酒を入れる関数
 function selectedLiqueur1(){
     drawSelectedLiqueur(1);
-    if(myGlass.length < 4){
+    if(myGlass.length < max_num){
         myGlass.push(1);
     }
 }
 
 function selectedLiqueur2(){
     drawSelectedLiqueur(2);
-    if(myGlass.length < 4){
+    if(myGlass.length < max_num){
         myGlass.push(2);
     }
 }
 
 function selectedLiqueur3(){
     drawSelectedLiqueur(3);
-    if(myGlass.length < 4){
+    if(myGlass.length < max_num){
         myGlass.push(3);
     }
 }
 
 function selectedLiqueur4(){
     drawSelectedLiqueur(4);
-    if(myGlass.length < 4){
+    if(myGlass.length < max_num){
         myGlass.push(4);
     }
 }
 
 function selectedLiqueur5(){
     drawSelectedLiqueur(5);
-    if(myGlass.length < 4){
+    if(myGlass.length < max_num){
         myGlass.push(5);
     }
 }
 
 function selectedLiqueur6(){
     drawSelectedLiqueur(6);
-    if(myGlass.length < 4){
+    if(myGlass.length < max_num){
         myGlass.push(6);
     }
 }
 
 function selectedLiqueur7(){
     drawSelectedLiqueur(7);
-    if(myGlass.length < 4){
+    if(myGlass.length < max_num){
         myGlass.push(7);
     }
 }
 
 function selectedLiqueur8(){
     drawSelectedLiqueur(8);
-    if(myGlass.length < 4){
+    if(myGlass.length < max_num){
         myGlass.push(8);
     }
 }
 
 function selectedLiqueur9(){
     drawSelectedLiqueur(9);
-    if(myGlass.length < 4){
+    if(myGlass.length < max_num){
         myGlass.push(9);
     }
 }
 
 function selectedLiqueur10(){
     drawSelectedLiqueur(10);
-    if(myGlass.length < 4){
+    if(myGlass.length < max_num){
         myGlass.push(10);
     }
 }
 
 function selectedLiqueur11(){
     drawSelectedLiqueur(11);
-    if(myGlass.length < 4){
+    if(myGlass.length < max_num){
         myGlass.push(11);
     }
 }
 
 function selectedLiqueur12(){
     drawSelectedLiqueur(12);
-    if(myGlass.length < 4){
+    if(myGlass.length < max_num){
         myGlass.push(12);
     }
 }
@@ -378,4 +435,13 @@ function updateGuest3(){
     guestTimeLimit3 = setTimeLimit(guestGlass3);
     guestTimer3 = guestTimeLimit3;
     drawOrder(guestGlass3, 3);
+}
+
+function initializeGlasses(){
+    resetGuestGlass1();
+    updateGuest1();
+    resetGuestGlass2();
+    updateGuest2();
+    resetGuestGlass3();
+    updateGuest3();
 }
