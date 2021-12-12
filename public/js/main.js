@@ -1,8 +1,8 @@
 // test
-guestGrass1 = createOrder();
-guestGrass2 = createOrder();
-guestGrass3 = createOrder();
+guestGlass1 = createOrder();
+guestGlass2 = createOrder();
+guestGlass3 = createOrder();
 
-drawOrder(guestGrass1,1)
-drawOrder(guestGrass2,2)
-drawOrder(guestGrass3,3)
+drawOrder(guestGlass1,1)
+drawOrder(guestGlass2,2)
+drawOrder(guestGlass3,3)
