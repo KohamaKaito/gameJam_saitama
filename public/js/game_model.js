@@ -150,7 +150,7 @@ guestGlass3 = createOrder();
 
 
 // 全体の制限時間
-let timeLimit = 10;
+let timeLimit = 60;
 let timer = timeLimit;
 
 // スコア
