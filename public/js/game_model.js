@@ -98,6 +98,12 @@ function judge(guestGlass){
     }
 }
 
+//　グラスをリセット
+function resetMyGlass(){
+    myGrass = [];
+    resetMyGlassView()
+}
+
 
 
 // 選んだお酒を入れる関数

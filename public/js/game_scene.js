@@ -23,7 +23,7 @@ let glassImage = new PIXI.Sprite(new PIXI.Texture.from("./images/glass.png"));
 glassImage.width = gameWindowWidth /5;
 glassImage.height = gameWindowHeight /3;
 glassImage.x = shelfImage.width * 1.2;
-glassImage.y = shelfImage.y + shelfImage.height * 0.4;
+glassImage.y = shelfImage.y + shelfImage.height * 0.2;
 gameScene.addChild(glassImage);
 
 
@@ -41,6 +41,16 @@ let bartenderImage = new PIXI.Sprite(new PIXI.Texture.from("./images/macho_barte
 bartenderImage.x = gameWindowWidth * 0.7;
 bartenderImage.y = gameWindowHeight * 0.5;
 gameScene.addChild(bartenderImage);
+
+//リセットボタンの配置
+let resetButton = new PIXI.Sprite(new PIXI.Texture.from("./images/RESET.png"));
+resetButton.interactive = true;
+resetButton.buttonMode = true;
+resetButton.width = glassImage.width
+resetButton.x = glassImage.x;
+resetButton.y = glassImage.y + glassImage.height * 1.05;
+resetButton.on('pointertap', resetMyGlass);
+gameScene.addChild(resetButton);
 
 
 // お客さんの枠の配置
@@ -269,6 +279,18 @@ for(let i=0; i<3; i++){
 
 
 // 入れたお酒を描画する関数
+let myGlassView = [];
+function drawSelectedLiqueur(liqueurNum){
+    if(myGrass.length == 4){
+        console.log("コップがいっぱいです")
+        return;
+    } else {
+        myGlassView[myGrass.length] = new PIXI.Graphics();
+        myGlassView[myGrass.length].beginFill(colorList[liqueurNum]);
+        myGlassView[myGrass.length].drawRect(glassImage.x, glassImage.y + (glassImage.height / 4) * (3 - myGrass.length), 
+        glassImage.width, glassImage.height / 4);
+        gameScene.addChild(myGlassView[myGrass.length]);
+
 // function drawSelectedLiqueur(liqueurNum){
 //     switch(myGlass.length){
 //         case 0 :
@@ -309,21 +331,6 @@ for(let i=0; i<3; i++){
 //     }
 // }
 
-// 入れたお酒を描画する関数
-let myGlassView = [];
-function drawSelectedLiqueur(liqueurNum){
-    if(myGlass.length == 4){
-        console.log("コップがいっぱいです")
-        return 
-    } else {
-        myGlassView[myGlass.length] = new PIXI.Graphics();
-        myGlassView[myGlass.length].beginFill(colorList[liqueurNum]);
-        myGlassView[myGlass.length].drawRect(glassImage.x, glassImage.y + (glassImage.height / 4) * (3 - myGlass.length), 
-        glassImage.width, glassImage.height / 4);
-        gameScene.addChild(myGlassView[myGlass.length]);
-        gameScene.addChild(glassImage);
-    }
-}
 
 let guestGlassView1 = [];
 let guestGlassView2 = [];
