@@ -253,83 +253,20 @@ liqueur12.on('pointertap', selectedLiqueur12);
 gameScene.addChild(liqueur12);
 
 
-/*
-// お酒の配置
-let liqueurNameList = ["passoa", "orange", "lemon", "lime", "gin", "soda", "whiskey", "tonic", "vodka", "u-ron", "cassis", "peach"]
-let liqueurImageList = []
-
-let liqueurNum = 0;
-for(let i=0; i<3; i++){
-    for(let j=0; j<4; j++){
-        liqueurImageList[liqueurNum] = new PIXI.Sprite(new PIXI.Texture.from("./images/" + liqueurNameList[liqueurNum] +".png"));
-        liqueurImageList[liqueurNum].interactive = true;
-        liqueurImageList[liqueurNum].buttonMode = true;
-        liqueurImageList[liqueurNum].on('pointertap', (event) => {
-            clickLiqueur(liqueurNameList[liqueurNum]);
-        })
-        liqueurImageList[liqueurNum].height = shelfImage.height /3;
-        liqueurImageList[liqueurNum].width = shelfImage.width /4;
-        liqueurImageList[liqueurNum].x = shelfImage.x + (liqueurImageList[i].width * j);
-        liqueurImageList[liqueurNum].y = shelfImage.y + (liqueurImageList[i].height * i);
-        gameScene.addChild(liqueurImageList[liqueurNum]);
-        liqueurNum += 1;
-    }
-}
-*/
-
-
 // 入れたお酒を描画する関数
 let myGlassView = [];
 function drawSelectedLiqueur(liqueurNum){
-    if(myGrass.length == 4){
+    if(myGlass.length == 4){
         console.log("コップがいっぱいです")
         return;
     } else {
-        myGlassView[myGrass.length] = new PIXI.Graphics();
-        myGlassView[myGrass.length].beginFill(colorList[liqueurNum]);
-        myGlassView[myGrass.length].drawRect(glassImage.x, glassImage.y + (glassImage.height / 4) * (3 - myGrass.length), 
-        glassImage.width, glassImage.height / 4);
-        gameScene.addChild(myGlassView[myGrass.length]);
-
-// function drawSelectedLiqueur(liqueurNum){
-//     switch(myGlass.length){
-//         case 0 :
-//             var graphics = new PIXI.Graphics();
-//             graphics.beginFill(colorList[liqueurNum]);
-//             graphics.drawRect(glassImage.x, glassImage.y + (glassImage.height / 4) * 3, 
-//             glassImage.width, glassImage.height / 4);
-//             gameScene.addChild(graphics);
-//             gameScene.addChild(glassImage);
-//             break;
-//         case 1 :
-//             var graphics = new PIXI.Graphics();
-//             graphics.beginFill(colorList[liqueurNum]);
-//             graphics.drawRect(glassImage.x, glassImage.y + (glassImage.height / 4) * 2, 
-//             glassImage.width, glassImage.height / 4);
-//             gameScene.addChild(graphics);
-//             gameScene.addChild(glassImage);
-//             break;
-//         case 2 :
-//             var graphics = new PIXI.Graphics();
-//             graphics.beginFill(colorList[liqueurNum]);
-//             graphics.drawRect(glassImage.x, glassImage.y + (glassImage.height / 4) * 1, 
-//             glassImage.width, glassImage.height / 4);
-//             gameScene.addChild(graphics);
-//             gameScene.addChild(glassImage);
-//             break;
-//         case 3 :
-//             var graphics = new PIXI.Graphics();
-//             graphics.beginFill(colorList[liqueurNum]);
-//             graphics.drawRect(glassImage.x, glassImage.y + (glassImage.height / 4) * 0, 
-//             glassImage.width, glassImage.height / 4);
-//             gameScene.addChild(graphics);
-//             gameScene.addChild(glassImage);
-//             break;
-//         case 4 : 
-//             console.log("コップがいっぱいです")
-//             break;
-//     }
-// }
+        myGlassView[myGlass.length] = new PIXI.Graphics();
+        myGlassView[myGlass.length].beginFill(colorList[liqueurNum]);
+        myGlassView[myGlass.length].drawRect(glassImage.x, glassImage.y + (glassImage.height / 4) * (3 - myGlass.length),
+            glassImage.width, glassImage.height / 4);
+        gameScene.addChild(myGlassView[myGlass.length]);
+    }
+}
 
 
 let guestGlassView1 = [];
@@ -400,4 +337,78 @@ function resetGuestGlassView3(){
         gameScene.removeChild(guestGlassView3[i]);
     }
     guestGlassView3 = [];
+}
+
+
+// 全体の制限時間の描画
+let timerText = new PIXI.Text(timer, {fill: 0x000000,  align :'center'});
+timerText.style.fontSize = gameWindowWidth/10;
+timerText.width = timerImage.width/3;
+timerText.height = timerImage.height/3;
+timerText.x = timerImage.x + timerImage.width/2 - timerText.width/2;
+timerText.y = timerImage.y + timerImage.height/2;
+function drawTimer(){
+    if(timer == 0){
+        alert('！！タイムアップ！！');
+    }
+    timer -= 1;
+    timerText.text = timer
+    gameScene.addChild(timerText);
+}
+
+
+// お客さん1の制限時間の描画
+let guestTimerView1 = new PIXI.Text(guestTimer1, {fill: 0x000000,  align :'center'});
+guestTimerView1.style.fontSize = gameWindowWidth/10;
+guestTimerView1.width = guestGlassImage1.width/2;
+guestTimerView1.height = guestGlassImage1.height/2;
+guestTimerView1.x = guestGlassImage1.x + guestGlassImage1.width/2 - guestTimerView1.width/2;
+guestTimerView1.y = guestGlassImage1.y + guestGlassImage1.height;
+// 1秒ごとに実行される
+function drawGuestTimer1(){
+    if(guestTimer1 == 0){
+        guestTimer1 = guestTimeLimit1;
+    }else{
+        guestTimer1 -= 1;
+    }
+    guestTimerView1.text = guestTimer1;
+    gameScene.addChild(guestTimerView1);
+}
+
+
+// お客さん2の制限時間の描画
+let guestTimerView2 = new PIXI.Text(guestTimer2, {fill: 0x000000,  align :'center'});
+guestTimerView2.style.fontSize = gameWindowWidth/10;
+guestTimerView2.width = guestGlassImage2.width/2;
+guestTimerView2.height = guestGlassImage2.height/2;
+guestTimerView2.x = guestGlassImage2.x + guestGlassImage2.width/2 - guestTimerView2.width/2;
+guestTimerView2.y = guestGlassImage2.y + guestGlassImage2.height;
+// 1秒ごとに実行される
+function drawGuestTimer2(){
+    if(guestTimer2 == 0){
+        guestTimer2 = guestTimeLimit2;
+    }else{
+        guestTimer2 -= 1;
+    }
+    guestTimerView2.text = guestTimer2;
+    gameScene.addChild(guestTimerView2);
+}
+
+
+// お客さん3の制限時間の描画
+let guestTimerView3 = new PIXI.Text(guestTimer3, {fill: 0x000000,  align :'center'});
+guestTimerView3.style.fontSize = gameWindowWidth/10;
+guestTimerView3.width = guestGlassImage3.width/2;
+guestTimerView3.height = guestGlassImage3.height/2;
+guestTimerView3.x = guestGlassImage3.x + guestGlassImage3.width/2 - guestTimerView3.width/2;
+guestTimerView3.y = guestGlassImage3.y + guestGlassImage3.height;
+// 1秒ごとに実行される
+function drawGuestTimer3(){
+    if(guestTimer3 == 0){
+        guestTimer3 = guestTimeLimit3;
+    }else{
+        guestTimer3 -= 1;
+    }
+    guestTimerView3.text = guestTimer3;
+    gameScene.addChild(guestTimerView3);
 }
