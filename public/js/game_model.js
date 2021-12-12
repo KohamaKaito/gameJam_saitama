@@ -135,7 +135,7 @@ function createOrder(){
         case "HARD":
             let lunaticList = [];
             for(let i=0; i<max_num; i++){
-                let num = Math.floor(Math.random() * colorList.length)+1;
+                let num = Math.floor(Math.random() * (12))+1;
                 lunaticList.push(num);
             }
             result = lunaticList;
