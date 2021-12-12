@@ -42,6 +42,9 @@ bartenderImage.x = gameWindowWidth * 0.7;
 bartenderImage.y = gameWindowHeight * 0.5;
 gameScene.addChild(bartenderImage);
 
+//リセットボタンの配置
+
+
 
 // お客さんの枠の配置
 let windowImage1 = new PIXI.Sprite(new PIXI.Texture.from("./images/window.png"));
