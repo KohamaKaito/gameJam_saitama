@@ -274,6 +274,7 @@ let myGlassView = [];
 function drawSelectedLiqueur(liqueurNum){
     if(myGrass.length == 4){
         console.log("コップがいっぱいです")
+        return;
     } else {
         myGlassView[myGrass.length] = new PIXI.Graphics();
         myGlassView[myGrass.length].beginFill(colorList[liqueurNum]);
