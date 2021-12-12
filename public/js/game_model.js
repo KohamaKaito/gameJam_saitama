@@ -22,6 +22,7 @@
 12 = "peach"
 */
 
+let difficulty = "EASY";
 
 // 自分のグラスの情報
 let myGlass = [];
@@ -112,8 +113,6 @@ let guestTimer3 = guestTimeLimit3;
 
 function setTimeLimit(guestGlass){
     let unique = Array.from(new Set(guestGlass))
-    console.log(guestGlass);
-    console.log(unique.length);
     switch(unique.length){
         case 4:
             return 30;

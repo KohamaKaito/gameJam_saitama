@@ -9,6 +9,16 @@ function fromTitleSceneToGameScene(){
     // mainループ スタート
     setInterval(main, 1000);
     //メインBGMスタート
-    mainBGM.play()
+    mainBGM.play();
 
+}
+
+function clickNormal(){
+    difficulty = "NORMAL";
+    fromTitleSceneToGameScene();
+}
+
+function clickHard(){
+    difficulty = "HARD";
+    fromTitleSceneToGameScene();
 }

@@ -26,14 +26,31 @@ titleScene.addChild(titleText);
 
 
 // ゲームをプレイボタンの配置
-let playButton = new PIXI.Text("ゲームをプレイする", {fill: 0xFFFFFF,  align :'center'});
-playButton.interactive = true;
-playButton.buttonMode = true;
-playButton.style.fontSize = gameWindowWidth/20;
-playButton.x = gameWindowWidth/2 - playButton.width/2;
-playButton.y = gameWindowHeight/1.45;
-playButton.on('pointertap', fromTitleSceneToGameScene);
-titleScene.addChild(playButton);
+let easyButton = new PIXI.Text("イージー", {fill: 0xFFFFFF,  align :'center'});
+easyButton.interactive = true;
+easyButton.buttonMode = true;
+easyButton.style.fontSize = gameWindowWidth/20;
+easyButton.x = gameWindowWidth/2 - easyButton.width * 2;
+easyButton.y = gameWindowHeight/1.45;
+easyButton.on('pointertap', fromTitleSceneToGameScene);
+titleScene.addChild(easyButton);
 
+let normalButton = new PIXI.Text("ノーマル", {fill: 0xFFFFFF,  align :'center'});
+normalButton.interactive = true;
+normalButton.buttonMode = true;
+normalButton.style.fontSize = gameWindowWidth/20;
+normalButton.x = gameWindowWidth/2 - normalButton.width/2;
+normalButton.y = gameWindowHeight/1.45;
+normalButton.on('pointertap', clickNormal);
+titleScene.addChild(normalButton);
+
+let hardButton = new PIXI.Text("ハード", {fill: 0xFFFFFF,  align :'center'});
+hardButton.interactive = true;
+hardButton.buttonMode = true;
+hardButton.style.fontSize = gameWindowWidth/20;
+hardButton.x = gameWindowWidth/2 + hardButton.width * 1.5;
+hardButton.y = gameWindowHeight/1.45;
+hardButton.on('pointertap', clickHard);
+titleScene.addChild(hardButton);
 
 app.stage.addChild(titleScene);
