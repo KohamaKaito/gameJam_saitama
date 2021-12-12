@@ -24,16 +24,16 @@
 
 
 // 自分のグラスの情報
-let myGrass = [];
+let myGlass = [];
 
 // お客さん1のグラスの情報
-let guestGrass1 = [];
+let guestGlass1 = [];
 
 // お客さん2のグラスの情報
-let guestGrass2 = [];
+let guestGlass2 = [];
 
 // お客さん3のグラスの情報
-let guestGrass3 = [];
+let guestGlass3 = [];
 
 // ドリンクリスト
 let easyDrinkList = [
@@ -88,10 +88,10 @@ function createOrder(){
 
 
 // 正解判定
-function judge(guestGrass){
-    myGrass.sort();
-    guestGrass.sort();
-    if(JSON.stringify(myGrass) == JSON.stringify(guestGrass)){
+function judge(guestGlass){
+    myGlass.sort();
+    guestGlass.sort();
+    if(JSON.stringify(myGlass) == JSON.stringify(guestGlass)){
         return true;
     }else{
         return false;
@@ -105,63 +105,148 @@ function resetMyGlass(){
 }
 
 
+
 // 選んだお酒を入れる関数
 function selectedLiqueur1(){
     drawSelectedLiqueur(1);
-    myGrass.push(1);
+    if(myGlass.length < 4){
+        myGlass.push(1);
+    }
 }
 
 function selectedLiqueur2(){
     drawSelectedLiqueur(2);
-    myGrass.push(2);
+    if(myGlass.length < 4){
+        myGlass.push(2);
+    }
 }
 
 function selectedLiqueur3(){
     drawSelectedLiqueur(3);
-    myGrass.push(3);
+    if(myGlass.length < 4){
+        myGlass.push(3);
+    }
 }
 
 function selectedLiqueur4(){
     drawSelectedLiqueur(4);
-    myGrass.push(4);
+    if(myGlass.length < 4){
+        myGlass.push(4);
+    }
 }
 
 function selectedLiqueur5(){
     drawSelectedLiqueur(5);
-    myGrass.push(5);
+    if(myGlass.length < 4){
+        myGlass.push(5);
+    }
 }
 
 function selectedLiqueur6(){
     drawSelectedLiqueur(6);
-    myGrass.push(6);
+    if(myGlass.length < 4){
+        myGlass.push(6);
+    }
 }
 
 function selectedLiqueur7(){
     drawSelectedLiqueur(7);
-    myGrass.push(7);
+    if(myGlass.length < 4){
+        myGlass.push(7);
+    }
 }
 
 function selectedLiqueur8(){
     drawSelectedLiqueur(8);
-    myGrass.push(8);
+    if(myGlass.length < 4){
+        myGlass.push(8);
+    }
 }
 
 function selectedLiqueur9(){
     drawSelectedLiqueur(9);
-    myGrass.push(9);
+    if(myGlass.length < 4){
+        myGlass.push(9);
+    }
 }
 
 function selectedLiqueur10(){
     drawSelectedLiqueur(10);
-    myGrass.push(10);
+    if(myGlass.length < 4){
+        myGlass.push(10);
+    }
 }
 
 function selectedLiqueur11(){
     drawSelectedLiqueur(11);
-    myGrass.push(11);
+    if(myGlass.length < 4){
+        myGlass.push(11);
+    }
 }
 
 function selectedLiqueur12(){
     drawSelectedLiqueur(12);
-    myGrass.push(12);
+    if(myGlass.length < 4){
+        myGlass.push(12);
+    }
 }
+
+
+//　グラスをリセット
+function resetMyGlass(){
+    myGlass = [];
+    resetMyGlassView()
+}
+
+function resetGuestGlass1(){
+    guestGlass1 = [];
+    resetGuestGlassView1()
+}
+
+function resetGuestGlass2(){
+    guestGlass2 = [];
+    resetGuestGlassView2()
+}
+
+function resetGuestGlass3(){
+    guestGlass3 = [];
+    resetGuestGlassView3()
+}
+
+//酒提供
+function serveDrink1(){
+    if(judge(guestGlass1) == true){
+        /* ここにスコア */  
+        alert("1いいね");      
+    }
+    else{
+        /* 減点する? */
+    }
+    resetMyGlass()
+    resetGuestGlass1()
+}
+
+function serveDrink2(){
+    if(judge(guestGlass2) == true){
+        /* ここにスコア */
+        alert("2いいね");
+    }
+    else{
+        /* 減点する? */
+    }
+    resetMyGlass()
+    resetGuestGlass2()
+}
+
+function serveDrink3(){
+    if(judge(guestGlass3) == true){
+        /* ここにスコア */ 
+        alert("3いいね");       
+    }
+    else{
+        /* 減点する? */
+    }
+    resetMyGlass()
+    resetGuestGlass3()
+}
+
