@@ -80,19 +80,25 @@ let colorList = [
 ];
 
 // 全体の制限時間
-let timer = 30;
+let timer = 120;
 
 // お客さん1の制限時間
-let guestTimeLimit1 = 9;
+let guestTimeLimit1 = 30;
 let guestTimer1 = guestTimeLimit1;
 
 // お客さん2の制限時間
-let guestTimeLimit2 = 9;
+let guestTimeLimit2 = 30;
 let guestTimer2 = guestTimeLimit2;
 
 // お客さん3の制限時間
-let guestTimeLimit3 = 9;
+let guestTimeLimit3 = 30;
 let guestTimer3 = guestTimeLimit3;
+
+// スコア
+let score = 0;
+
+
+
 
 // ランダムでオーダーを決定する関数
 function createOrder(){
@@ -230,8 +236,9 @@ function resetGuestGlass3(){
 //酒提供
 function serveDrink1(){
     if(judge(guestGlass1) == true){
-        /* ここにスコア */  
-        alert("1いいね");      
+        /* ここにスコア */
+        updateScore(1);
+        alert("1いいね");
     }
     else{
         /* 減点する? */
@@ -243,6 +250,7 @@ function serveDrink1(){
 function serveDrink2(){
     if(judge(guestGlass2) == true){
         /* ここにスコア */
+        updateScore(2);
         alert("2いいね");
     }
     else{
@@ -254,7 +262,8 @@ function serveDrink2(){
 
 function serveDrink3(){
     if(judge(guestGlass3) == true){
-        /* ここにスコア */ 
+        /* ここにスコア */
+        updateScore(3);
         alert("3いいね");       
     }
     else{
@@ -262,5 +271,61 @@ function serveDrink3(){
     }
     resetMyGlass()
     resetGuestGlass3()
+}
+
+
+// スコアの更新
+function updateScore(guestNum){
+    switch (guestNum){
+        case 1:
+            if(guestTimer1>=0 && guestTimer1<10){
+                score += 10;
+            }else if(guestTimer1>=10 && guestTimer1<20){
+                score += 20;
+            }else if(guestTimer1>=20 && guestTimer1<30){
+                score += 30;
+            }
+            break
+        case 2:
+            if(guestTimer2>=0 && guestTimer2<10){
+                score += 10;
+            }else if(guestTimer2>=10 && guestTimer2<20){
+                score += 20;
+            }else if(guestTimer2>=20 && guestTimer2<30){
+                score += 30;
+            }
+            break
+        case 3:
+            if(guestTimer3>=0 && guestTimer3<10){
+                score += 10;
+            }else if(guestTimer3>=10 && guestTimer3<20){
+                score += 20;
+            }else if(guestTimer3>=20 && guestTimer3<30){
+                score += 30;
+            }
+            break
+    }
+}
+
+
+function decrementTimer(){
+    timer -= 1;
+    if(guestTimer1 == 0){
+        guestTimer1 = guestTimeLimit1;
+    }else{
+        guestTimer1 -= 1;
+    }
+
+    if(guestTimer2 == 0){
+        guestTimer2 = guestTimeLimit2;
+    }else{
+        guestTimer2 -= 1;
+    }
+
+    if(guestTimer3 == 0){
+        guestTimer3 = guestTimeLimit3;
+    }else{
+        guestTimer3 -= 1;
+    }
 }
 
