@@ -91,7 +91,7 @@ guestGlass3 = createOrder();
 
 
 // 全体の制限時間
-let timer = 120;
+let timer = 60;
 
 // お客さん1の制限時間
 
