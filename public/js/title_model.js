@@ -11,4 +11,6 @@ function fromTitleSceneToGameScene(){
     setInterval(drawGuestTimer1, 1000);
     setInterval(drawGuestTimer2, 1000);
     setInterval(drawGuestTimer3, 1000);
+    //メインBGMスタート
+    mainBGM.play()
 }

@@ -235,6 +235,7 @@ function selectedLiqueur12(){
 
 //　グラスをリセット
 function resetMyGlass(){
+    drinkResetBGM.play()
     myGlass = [];
     resetMyGlassView();
 }
@@ -258,9 +259,11 @@ function resetGuestGlass3(){
 function serveDrink1(){
     if(judge(guestGlass1) == true){
         /* ここにスコア */  
+        okBGM.play();
         alert("1いいね");      
     }
     else{
+        missBGM.play();
         /* 減点する? */
     }
     resetMyGlass();
@@ -271,9 +274,12 @@ function serveDrink1(){
 function serveDrink2(){
     if(judge(guestGlass2) == true){
         /* ここにスコア */
+        okBGM.play();
         alert("2いいね");
+
     }
     else{
+        missBGM.play();
         /* 減点する? */
     }
     resetMyGlass();
@@ -284,9 +290,11 @@ function serveDrink2(){
 function serveDrink3(){
     if(judge(guestGlass3) == true){
         /* ここにスコア */ 
+        okBGM.play();
         alert("3いいね");       
     }
     else{
+        missBGM.play();
         /* 減点する? */
     }
     resetMyGlass();
