@@ -13,7 +13,7 @@ let gameWindow = document.getElementById("game_window");
 let app = new PIXI.Application({
     width: gameWindowWidth,
     height: gameWindowHeight,
-    backgroundColor: 0xFFFFFF,
+    backgroundColor: 0xf5deb3,
 });
 gameWindow.appendChild(app.view);
 

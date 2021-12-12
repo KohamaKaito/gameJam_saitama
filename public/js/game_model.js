@@ -150,14 +150,13 @@ guestGlass3 = createOrder();
 
 
 // 全体の制限時間
-let timer = 60;
-
-// お客さん1の制限時間
-
+let timeLimit = 10;
+let timer = timeLimit;
 
 // スコア
 let score = 0;
 
+// お客さん1の制限時間
 let guestTimeLimit1 = setTimeLimit(guestGlass1);
 let guestTimer1 = guestTimeLimit1;
 
@@ -328,8 +327,8 @@ function serveDrink1(){
         okBGM.play();      
     }
     else{
+        score -= 10;
         missBGM.play();
-        /* 減点する? */
     }
     resetMyGlass();
     resetGuestGlass1();
@@ -342,8 +341,8 @@ function serveDrink2(){
         okBGM.play();
     }
     else{
+        score -= 10;
         missBGM.play();
-        /* 減点する? */
     }
     resetMyGlass();
     resetGuestGlass2();
@@ -356,8 +355,8 @@ function serveDrink3(){
         okBGM.play();      
     }
     else{
+        score -= 10;
         missBGM.play();
-        /* 減点する? */
     }
     resetMyGlass();
     resetGuestGlass3();
@@ -402,18 +401,21 @@ function updateScore(guestNum){
 function decrementTimer(){
     timer -= 1;
     if(guestTimer1 == 0){
+        score -= 10;
         guestTimer1 = guestTimeLimit1;
     }else{
         guestTimer1 -= 1;
     }
 
     if(guestTimer2 == 0){
+        score -= 10;
         guestTimer2 = guestTimeLimit2;
     }else{
         guestTimer2 -= 1;
     }
 
     if(guestTimer3 == 0){
+        score -= 10;
         guestTimer3 = guestTimeLimit3;
     }else{
         guestTimer3 -= 1;
@@ -448,4 +450,12 @@ function initializeGlasses(){
     updateGuest2();
     resetGuestGlass3();
     updateGuest3();
+}
+
+
+// ゲーム画面からスコア表示画面へ画面遷移する関数
+function fromGameSceneToScoreScene(){
+    drawFinalScore();
+    app.stage.removeChild(gameScene);
+    app.stage.addChild(scoreScene);
 }

@@ -7,7 +7,7 @@ function fromTitleSceneToGameScene(){
     app.stage.removeChild(titleScene);
     app.stage.addChild(gameScene);
     // mainループ スタート
-    setInterval(main, 1000);
+    mainLoop = setInterval(main, 1000);
     //メインBGMスタート
     mainBGM.play();
 
