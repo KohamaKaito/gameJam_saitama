@@ -8,7 +8,6 @@
 
 const gameScene = new PIXI.Container();
 
-
 // 棚の配置
 let shelfImage = new PIXI.Sprite(new PIXI.Texture.from("./images/shelf.png"));
 shelfImage.width = gameWindowWidth * 0.4;
@@ -259,9 +258,12 @@ gameScene.addChild(liqueur12);
 let myGlassView = [];
 function drawSelectedLiqueur(liqueurNum){
     if(myGlass.length == 4){
-        console.log("コップがいっぱいです")
+        missBGM.play()
+        alert("コップがいっぱいです!!!")
         return;
     } else {
+        drinkBGM.play();
+        drinkBGM.currentTime = 0;
         myGlassView[myGlass.length] = new PIXI.Graphics();
         myGlassView[myGlass.length].beginFill(colorList[liqueurNum]);
         myGlassView[myGlass.length].drawRect(glassImage.x, glassImage.y + (glassImage.height / 4) * (3 - myGlass.length),
