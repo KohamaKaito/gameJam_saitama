@@ -23,7 +23,7 @@ let glassImage = new PIXI.Sprite(new PIXI.Texture.from("./images/glass.png"));
 glassImage.width = gameWindowWidth /5;
 glassImage.height = gameWindowHeight /3;
 glassImage.x = shelfImage.width * 1.2;
-glassImage.y = shelfImage.y + shelfImage.height * 0.4;
+glassImage.y = shelfImage.y + shelfImage.height * 0.2;
 gameScene.addChild(glassImage);
 
 
@@ -43,7 +43,14 @@ bartenderImage.y = gameWindowHeight * 0.5;
 gameScene.addChild(bartenderImage);
 
 //リセットボタンの配置
-
+let resetButton = new PIXI.Sprite(new PIXI.Texture.from("./images/RESET.png"));
+resetButton.interactive = true;
+resetButton.buttonMode = true;
+resetButton.width = glassImage.width
+resetButton.x = glassImage.x;
+resetButton.y = glassImage.y + glassImage.height * 1.05;
+resetButton.on('pointertap', resetMyGlass);
+gameScene.addChild(resetButton);
 
 
 // お客さんの枠の配置
@@ -263,45 +270,22 @@ for(let i=0; i<3; i++){
 
 
 // 入れたお酒を描画する関数
+let myGlassView = [];
 function drawSelectedLiqueur(liqueurNum){
-    switch(myGrass.length){
-        case 0 :
-            var graphics = new PIXI.Graphics();
-            graphics.beginFill(colorList[liqueurNum]);
-            graphics.drawRect(glassImage.x, glassImage.y + (glassImage.height / 4) * 3, 
-            glassImage.width, glassImage.height / 4);
-            gameScene.addChild(graphics);
-            gameScene.addChild(glassImage);
-            break;
-        case 1 :
-            var graphics = new PIXI.Graphics();
-            graphics.beginFill(colorList[liqueurNum]);
-            graphics.drawRect(glassImage.x, glassImage.y + (glassImage.height / 4) * 2, 
-            glassImage.width, glassImage.height / 4);
-            gameScene.addChild(graphics);
-            gameScene.addChild(glassImage);
-            break;
-        case 2 :
-            var graphics = new PIXI.Graphics();
-            graphics.beginFill(colorList[liqueurNum]);
-            graphics.drawRect(glassImage.x, glassImage.y + (glassImage.height / 4) * 1, 
-            glassImage.width, glassImage.height / 4);
-            gameScene.addChild(graphics);
-            gameScene.addChild(glassImage);
-            break;
-        case 3 :
-            var graphics = new PIXI.Graphics();
-            graphics.beginFill(colorList[liqueurNum]);
-            graphics.drawRect(glassImage.x, glassImage.y + (glassImage.height / 4) * 0, 
-            glassImage.width, glassImage.height / 4);
-            gameScene.addChild(graphics);
-            gameScene.addChild(glassImage);
-            break;
-        case 4 : 
-            console.log("コップがいっぱいです")
-            break;
+    if(myGrass.length == 4){
+        console.log("コップがいっぱいです")
+    } else {
+        myGlassView[myGrass.length] = new PIXI.Graphics();
+        myGlassView[myGrass.length].beginFill(colorList[liqueurNum]);
+        myGlassView[myGrass.length].drawRect(glassImage.x, glassImage.y + (glassImage.height / 4) * (3 - myGrass.length), 
+        glassImage.width, glassImage.height / 4);
+        gameScene.addChild(myGlassView[myGrass.length]);
+        gameScene.addChild(glassImage);
     }
 }
+
+
+
 
 
 // 客のオーダーを描画する関数
@@ -338,4 +322,11 @@ function drawOrder(orderList,guestNumber){
             }
             break;
     }
+}
+
+function resetMyGlassView(){
+    for(let i=0; i<myGlassView.length; i++){
+        gameScene.removeChild(myGlassView[i]);
+    }
+    myGlassView = [];
 }
