@@ -133,9 +133,14 @@ function createOrder(){
             result = hardDrinkList[randomIntHard];
             break;
         case "HARD":
+            let lunaticList = [];
+            for(let i=0; i<max_num; i++){
+                let num = Math.floor(Math.random() * colorList.length)+1;
+                lunaticList.push(num);
+            }
+            result = lunaticList;
             break;
     }
-    console.log(result);
     return result;
 }
 
@@ -193,7 +198,6 @@ function setTimeLimit(guestGlass){
 function judge(guestGlass){
     myGlass.sort();
     guestGlass.sort();
-    alert([myGlass, guestGlass]);
     if(JSON.stringify(myGlass) == JSON.stringify(guestGlass)){
         return true;
     }else{
